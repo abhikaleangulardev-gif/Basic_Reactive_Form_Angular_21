@@ -1,0 +1,84 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Reactive form</h4>
+                </div>
+                <div class="card-body">
+                    @if(myDisplayFormSpecificTime){
+                    <form [formGroup]="myReactiveForm" (ngSubmit)="onSave()">
+                        <div class="form-row">
+                            <div class="col-sm-12">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="enter your username....." formControlName="username">
+                            </div>
+                            @if (myReactiveForm.get('username')?.touched &&
+                            myReactiveForm.get('username')?.errors?.['required']) {
+                            <span class="text-danger">*Required Username</span>
+                            }@else if(myReactiveForm.get('username')?.touched &&
+                            myReactiveForm.get('username')?.errors?.['minlength']){
+                            <span class="text-danger">*Min length is
+                                {{myReactiveForm.get('username')?.errors?.['minlength']?.requiredLength}}</span>
+                            }@else if(myReactiveForm.get('username')?.touched &&
+                            myReactiveForm.get('username')?.errors?.['maxlength']){
+                            <span class="text-danger">*Max length is
+                                {{myReactiveForm.get('username')?.errors?.['maxlength']?.requiredLength}}</span>
+                            }
+                        </div>
+                        <div class="form-row my-4">
+                            <div class="col-sm-12">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="enter your email....." formControlName="email">
+                            </div>
+                            @if (myReactiveForm.get('email')?.touched &&
+                            myReactiveForm.get('email')?.errors?.['required']) {
+                            <span class="text-danger">*Required Email</span>
+                            }@else if(myReactiveForm.get('email')?.touched &&
+                            myReactiveForm.get('email')?.errors?.['pattern']){
+                            <span class="text-danger">*Required Email Formatted Is
+                                {{myReactiveForm.get('email')?.errors?.['pattern']?.requiredPattern}}</span>
+                            }
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-12">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="enter your password....." formControlName="password">
+                            </div>
+                            @if (myReactiveForm.get('password')?.touched &&
+                            myReactiveForm.get('password')?.errors?.['required']) {
+                            <span class="text-danger">*Required Password</span>
+                            }@else if(myReactiveForm.get('password')?.touched &&
+                            myReactiveForm.get('password')?.errors?.['pattern']){
+                            <span class="text-danger">*Required Password Formatted Is
+                                {{myReactiveForm.get('password')?.errors?.['pattern']?.requiredPattern}}</span>
+                            }
+                        </div>
+                        <div class="form-row my-5">
+                            <div class="col-sm-12 d-flex justify-content-between">
+                                <h3>skills</h3>
+                                <button type="button" class="btn btn-primary btn-sm" (click)="addSkill()">Add Skill</button>
+                            </div>
+                            <div class="col-sm-12 my-3">
+                                <div class="skllis" formArrayName="skills">
+                                    @for (skill of skills.controls; track $index) {
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Enter Your Skill Name...."
+                                                [formControlName]="$index"
+                                                aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <button class="btn btn-outline-danger" type="button"
+                                                (click)="removeSkill($index)">Remove Skill</button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm my-4 w-100"
+                            [disabled]="myReactiveForm.invalid">Save</button>
+                    </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
