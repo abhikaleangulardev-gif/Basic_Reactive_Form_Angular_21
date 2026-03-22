@@ -1,0 +1,14 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-8">
+            <form [formGroup]="myReactiveForm">
+                <input type="text" name="" id="" class="form-control" placeholder="enter fullname....."
+                    formControlName="fullname">
+            </form>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<pre><b class="text-success"> fullname : {{myFullName | uppercase}}</b></pre>
