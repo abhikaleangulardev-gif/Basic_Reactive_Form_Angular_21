@@ -6,5 +6,8 @@ export const routes: Routes = [
     },
     {
         path: 'basic-reactive-form', loadComponent: () => import('./component/reactive-form/reactive-form').then((c) => c.ReactiveForm)
+    },
+    {
+        path: 'basic-add-remove-control-form', loadComponent: () => import('./component/basic-add-control-remove-control/basic-add-control-remove-control').then((c) => c.BasicAddControlRemoveControl)
     }
 ];
