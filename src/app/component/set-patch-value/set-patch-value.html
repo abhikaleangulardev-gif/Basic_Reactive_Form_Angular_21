@@ -1,0 +1,53 @@
+<div class="container my-5">
+  <div class="row">
+    <form class="w-100" [formGroup]="myReactiveForm">
+      <div class="row"> 
+        <div class="col-sm-6">
+          <label for="firstname">First Name</label>
+          <input type="text" name="firstname" id="firstname"
+            class="form-control"
+            placeholder="enter your firstname...." formControlName="firstname">
+        </div>
+
+        <div class="col-sm-6">
+          <label for="lastname">Last Name</label>
+          <input type="text" name="lastname" id="lastname"
+            class="form-control"
+            placeholder="enter your lastname...." formControlName="lastname">
+        </div>
+      </div>
+        <div class="row my-4"> 
+        <div class="col-sm-6">
+          <label for="email">Email Address</label>
+          <input type="text" name="email" id="email"
+            class="form-control"
+            placeholder="enter your email address...." formControlName="emailaddress">
+        </div>
+
+        <div class="col-sm-6">
+          <label for="contactnumber">Contact Number</label>
+          <input type="text" name="contactnumber" id="contactnumber"
+            class="form-control"
+            placeholder="enter your contactnumber...." formControlName="contactnumber">
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-primary btn-sm" (click)="onSetFormValue()">Set Value</button>
+          <button type="button" class="btn btn-info btn-sm" (click)="onPatchFormValue()">patch value</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<div class="row my-5">
+    <div class="col-sm-6">
+         <h4 class="text-success">Set Value Form</h4>
+         <p>{{mySetValueObj | json}}</p>
+    </div>
+     <div class="col-sm-6">
+         <h4 class="text-success">Patch Value Form</h4>
+         <p>{{myPathcValueObj() | json}}</p>
+    </div>
+</div>

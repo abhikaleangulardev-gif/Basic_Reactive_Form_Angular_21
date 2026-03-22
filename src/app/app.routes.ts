@@ -12,6 +12,9 @@ export const routes: Routes = [
     },
     {
         path: 'basic-value-change', loadComponent: () => import('./component/valuechange/valuechange').then((c) => c.Valuechange)
+    },
+    {
+        path: 'basic-set-patch-value-form', loadComponent: () => import('./component/set-patch-value/set-patch-value').then((c) => c.SetPatchValue)
     }
 ];
 
