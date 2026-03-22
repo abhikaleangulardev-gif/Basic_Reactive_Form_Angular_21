@@ -15,6 +15,9 @@ export const routes: Routes = [
     },
     {
         path: 'basic-set-patch-value-form', loadComponent: () => import('./component/set-patch-value/set-patch-value').then((c) => c.SetPatchValue)
+    },
+    {
+        path: 'basic-set-patch-value-form-validators', loadComponent: () => import('./component/set-remove-validators/set-remove-validators').then((c) => c.SetRemoveValidators)
     }
 ];
 

@@ -1,0 +1,94 @@
+<div class="container my-5">
+    <div class="row">
+        <form class="w-100" [formGroup]="myReactiveForm">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname" class="form-control"
+                        placeholder="enter your firstname...." formControlName="firstname">
+                    @if (myReactiveForm.get('firstname')?.touched &&
+                    myReactiveForm.get('firstname')?.errors?.['required']) {
+                    <span class="text-danger">*First name is required</span>
+                    }@else if(myReactiveForm.get('firstname')?.touched &&
+                    myReactiveForm.get('firstname')?.errors?.['minlength']?.requiredLength){
+                    <span class="text-danger">*Minimum length is {{
+                        myReactiveForm.get('firstname')?.errors?.['minlength']?.requiredLength }}</span>
+                    }
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname" class="form-control"
+                        placeholder="enter your lastname...." formControlName="lastname">
+                    @if (myReactiveForm.get('lastname')?.touched &&
+                    myReactiveForm.get('lastname')?.errors?.['required']) {
+                    <span class="text-danger">*Last name is required</span>
+                    }@else if(myReactiveForm.get('lastname')?.touched &&
+                    myReactiveForm.get('lastname')?.errors?.['minlength']?.requiredLength){
+                    <span class="text-danger">*Minimum length is {{
+                        myReactiveForm.get('lastname')?.errors?.['minlength']?.requiredLength }}</span>
+                    }
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-6">
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" id="email" class="form-control"
+                        placeholder="enter your email address...." formControlName="emailaddress">
+                    @if (myReactiveForm.get('emailaddress')?.touched &&
+                    myReactiveForm.get('emailaddress')?.errors?.['required']) {
+                    <span class="text-danger">*Email Address is required</span>
+                    } @else if (myReactiveForm.get('emailaddress')?.touched &&
+                    myReactiveForm.get('emailaddress')?.errors?.['email']) {
+                    <span class="text-danger">*Please enter a valid email address</span>
+                    }
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="contactnumber">Contact Number</label>
+                    <input type="text" name="contactnumber" id="contactnumber" class="form-control"
+                        placeholder="enter your contactnumber...." formControlName="contactnumber">
+                    @if (myReactiveForm.get('contactnumber')?.touched &&
+                    myReactiveForm.get('contactnumber')?.errors?.['required']) {
+                    <span class="text-danger">*Contact Number is required</span>
+                    } @else if (myReactiveForm.get('contactnumber')?.touched &&
+                    myReactiveForm.get('contactnumber')?.errors?.['pattern']?.requiredPattern) {
+                    <span class="text-danger">*Please enter a valid Contact number</span>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password" class="form-control"
+                        placeholder="enter your password...." formControlName="password">
+
+                    <span class="text-danger" *ngIf="myReactiveForm.get('password')?.touched &&
+                                  myReactiveForm.get('password')?.errors?.['required']">
+                        *Password is required
+                    </span>
+
+                    <span class="text-danger" *ngIf="myReactiveForm.get('password')?.touched &&
+                                  myReactiveForm.get('password')?.errors?.['pattern']">
+                        *Password must contain at least 8 characters, including uppercase, lowercase, number & special
+                        character
+                    </span>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button type="button" class="btn btn-primary me-2" (click)="setValidation()">
+                    Set Validators
+                </button>
+
+                <button type="button" class="btn btn-warning me-2" (click)="clearValidation()">
+                    Clear Validators
+                </button>
+
+                <button type="button" class="btn btn-warning me-2" (click)="removeValidation()">
+                    Remove Validators
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
