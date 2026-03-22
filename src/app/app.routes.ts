@@ -9,5 +9,11 @@ export const routes: Routes = [
     },
     {
         path: 'basic-add-remove-control-form', loadComponent: () => import('./component/basic-add-control-remove-control/basic-add-control-remove-control').then((c) => c.BasicAddControlRemoveControl)
+    },
+    {
+        path: 'basic-value-change', loadComponent: () => import('./component/valuechange/valuechange').then((c) => c.Valuechange)
     }
 ];
+
+
+
