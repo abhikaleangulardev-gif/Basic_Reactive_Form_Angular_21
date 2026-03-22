@@ -1,0 +1,47 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form [formGroup]="myReactiveForm">
+
+        <div class="row">
+          @for (field of myAddFields(); track field) {
+
+          <div class="col-md-8 mb-3">
+
+            <label [for]="field" class="form-label text-capitalize">
+              {{ field }}
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [id]="field"
+              [placeholder]="myPlaceholderName()[field]"
+              [formControlName]="field"
+            />
+
+            <!-- ❗ Validation -->
+            <div class="text-danger mt-1" *ngIf="myReactiveForm.get(field)?.touched && myReactiveForm.get(field)?.invalid">
+              Field is required
+            </div>
+
+            <!-- ❌ Remove Button -->
+            <button
+              type="button"
+              class="btn btn-danger btn-sm mt-2"
+              (click)="onRemoveFormControl(field)"
+            >
+              Remove
+            </button>
+
+          </div>
+
+          }
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
