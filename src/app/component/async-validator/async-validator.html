@@ -1,0 +1,22 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <form [formGroup]="myReactiveForm">
+
+                <label>Username:</label>
+                <input type="text" formControlName="username"  placeholder="enter your username...." class="form-control"/>
+
+                <!-- Loading State -->
+                <div *ngIf="myReactiveForm.get('username')?.pending">
+                    Checking username...
+                </div>
+
+                <!-- Error Message -->
+                <div *ngIf="myReactiveForm.get('username')?.errors?.['usernameTaken']">
+                    Username already exists ❌
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

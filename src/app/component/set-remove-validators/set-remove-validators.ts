@@ -57,9 +57,7 @@ export class SetRemoveValidators implements OnInit {
     this.myReactiveForm.get('emailaddress')?.updateValueAndValidity();
     this.myReactiveForm.get('contactnumber')?.updateValueAndValidity();
     this.myReactiveForm.get('password')?.updateValueAndValidity();
-
-
-
+    
   }
 
   // ❌ clear VALIDATORS firs using clearValidators() and last written updateValueAndValidity
